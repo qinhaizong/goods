@@ -2,7 +2,7 @@
 SQLyog Ultimate v8.32 
 MySQL - 5.1.32-community-log : Database - goods
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
