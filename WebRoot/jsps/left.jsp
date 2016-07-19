@@ -1,40 +1,104 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">
 
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-    <head>
-        <title>left</title>
-        <base target="body"/>
-        <meta http-equiv="pragma" content="no-cache">
-        <meta http-equiv="cache-control" content="no-cache">
-        <meta http-equiv="expires" content="0">    
-        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-        <meta http-equiv="description" content="This is my page">
-        <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <!--
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        -->
-        <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
-        <link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>" type="text/css" media="all">
-        <script language="javascript">
-            var bar = new Q6MenuBar("bar", "图书分类");
-            $(function () {
-                bar.colorStyle = 4;
-                bar.config.imgDir = "<c:url value='/menu/img/'/>";
-                bar.config.radioButton = true;
-            <c:forEach items="${parents}" var="parent">
-                <c:forEach items="${parent.children}" var="child">
-                bar.add("${parent.cname}", "${child.cname}", "<c:url value='/BookServlet?method=findByCategory&cid=${child.cid}'/>", "body");
-                </c:forEach>
-            </c:forEach>
-                $("#menu").html(bar.toString());
-            });
-        </script>
-    </head>
-    <body>  
-        <div id="menu"></div>
-    </body>
-</html>
+	/*	.left-nav:first-child{
+			font: normal 16px 'Microsoft YaHei';
+			padding: 8px;
+			background-color: #B1191A !important;
+		}*/
+	.left-nav a{
+		text-decoration: none;
+		font: normal 14px 'Microsoft YaHei';
+		cursor: pointer;
+		float:left;
+		padding: 8px;
+	}
+	.left-nav li{
+		color: #fff;
+		text-indent: 20px;
+		list-style: none;
+		float: left;
+		width: 100%;
+		text-align: center;
+		/*padding: 5px 20px 5px 0px;*/
+		border-bottom: 1px dotted #fff;
+	}
+	.left-nav li:hover{
+		color: #c81623;
+		background-color: #fff;
+	}
+	.left-nav-level-1 li{
+		background-color: #c81623;
+		border-left: 1px solid #c81623;
+	}
+	.left-nav-level-1 li:first-child{
+		border-top: 1px solid #c81623;
+	}
+	.left-nav-level-1 li:last-child{
+		border-bottom: 1px solid #c81623;
+	}
+	.left-nav-level-1 li:hover{
+		background-color: #fff;
+		color: #c81623;
+	}
+	.left-nav-level-2 {
+		display: none;
+	}
+	.left-nav-level-2 li{
+		background-color: #e81c1c;
+		text-indent: 40px;
+		border-top:none;
+		border-left:none;
+		color: #fff;
+	}
+	.left-nav-level-2 a{
+		text-align: left;
+		width: 100%;
+		color: #fff;
+	}
+	.left-nav-level-2 li:hover, .left-nav-level-2 a:hover{
+		color: #e81c1c;
+	}
+	.left-nav-level-2 li:first-child{
+		/*border-top: 1px dotted #fff;*/
+		/*margin-top: 3px;*/
+	}
+	.left-nav-level-2 li:last-child{
+		border-bottom:none;
+	}
+</style>
+<div class="left-nav">
+	<ul class="left-nav-level-1">
+		<li class="main-category">
+			<a>图书分类</a>
+		</li>
+		<c:forEach items="${parents}" var="parent">
+			<li class="level-1">
+				<a>${parent.cname}</a>
+				<ul class="left-nav-level-2">
+					<c:forEach items="${parent.children}" var="child">
+						<li>
+							<a data-cid="${child.cid}">${child.cname}</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</li>
+		</c:forEach>
+	</ul>
+</div>
+<script>
+	$(function () {
+		var path = '<c:url value='/BookServlet'/>', param = {method: 'findByCategory'};
+		$.each($('.left-nav li').slice(1), function () {
+			$(this).on('click', function () {
+				if ($(this).hasClass('level-1')) {
+					$('.left-nav-level-2').hide();
+					$(this).children('ul').show();
+				} else {
+					$('.content').load(path, $.extend(param, $(this).attr('data-cid')));
+				}
+			});
+		});
+	});
+</script>

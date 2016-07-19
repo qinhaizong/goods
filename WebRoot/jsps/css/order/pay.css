@@ -75,5 +75,5 @@ img {
 	background-position: 0 -75px;
 	height: 40px;
 	width: 190px;
-	poorfish: expression(this.onclick = function jiesuan(){return true});
+	/*poorfish: expression(this.onclick = function jiesuan(){return true});*/
 }

@@ -24,8 +24,9 @@
         color: #fff;
         background-color: #e81c1c;
         padding: 6px 15px;
+		cursor: pointer;
     }
-     .search-more{
+	.search-more{
         float: left;
         text-transform: none;
         text-decoration: none;
@@ -35,11 +36,19 @@
         color: #e81c1c;
         border: 1px solid #e81c1c;
         margin-left: 10px;
+		cursor: pointer;
     }
 </style>
 <form action="<c:url value='/BookServlet'/>" method="get" target="body" id="form1">
     <input type="hidden" name="method" value="findByBname"/>
     <input class="search-input" type="text" name="bname"/>
-    <a class="search-btn" href="javascript:document.getElementById('form1').submit();">搜索</a>
-    <a class="search-more" href="<c:url value="/jsps/gj.jsp"/>" target="body">高级搜索</a>
+    <a class="search-btn">搜索</a>
+    <a class="search-more" target="body">高级搜索</a>
 </form>
+<script>
+	$(function () {
+		$('.search-more').on('click', function () {
+			$('.content').load('<c:url value="/jsps/gj.jsp"/>');
+		});
+	});
+</script>
