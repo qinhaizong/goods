@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class PaymentUtil {
 
-	private static String encodingCharset = "UTF-8";
+	private static final String ENCODING_CHARSET = "UTF-8";
 	
 	/**
 	 * 生成hmac方法
@@ -123,8 +123,8 @@ public class PaymentUtil {
 		byte keyb[];
 		byte value[];
 		try {
-			keyb = aKey.getBytes(encodingCharset);
-			value = aValue.getBytes(encodingCharset);
+			keyb = aKey.getBytes(ENCODING_CHARSET);
+			value = aValue.getBytes(ENCODING_CHARSET);
 		} catch (UnsupportedEncodingException e) {
 			keyb = aKey.getBytes();
 			value = aValue.getBytes();
@@ -157,7 +157,7 @@ public class PaymentUtil {
 	public static String toHex(byte input[]) {
 		if (input == null)
 			return null;
-		StringBuffer output = new StringBuffer(input.length * 2);
+		StringBuilder output = new StringBuilder(input.length * 2);
 		for (int i = 0; i < input.length; i++) {
 			int current = input[i] & 0xff;
 			if (current < 16)
@@ -178,10 +178,10 @@ public class PaymentUtil {
 		if (args == null || args.length == 0) {
 			return (null);
 		}
-		StringBuffer str = new StringBuffer();
-		for (int i = 0; i < args.length; i++) {
-			str.append(args[i]);
-		}
+		StringBuilder str = new StringBuilder();
+        for (String arg : args) {
+            str.append(arg);
+        }
 		return (hmacSign(str.toString(), key));
 	}
 
@@ -193,7 +193,7 @@ public class PaymentUtil {
 		aValue = aValue.trim();
 		byte value[];
 		try {
-			value = aValue.getBytes(encodingCharset);
+			value = aValue.getBytes(ENCODING_CHARSET);
 		} catch (UnsupportedEncodingException e) {
 			value = aValue.getBytes();
 		}

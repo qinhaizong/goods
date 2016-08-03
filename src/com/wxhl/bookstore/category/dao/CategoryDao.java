@@ -15,7 +15,7 @@ import com.wxhl.tools.jdbc.TxQueryRunner;
 
 public class CategoryDao {
 
-	private QueryRunner qr = new TxQueryRunner();
+	private final QueryRunner qr = new TxQueryRunner();
 
 	/**
 	 * 返回所有分类

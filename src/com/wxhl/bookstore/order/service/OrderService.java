@@ -8,7 +8,7 @@ import com.wxhl.tools.jdbc.JdbcUtils;
 import com.wxhl.pager.PageBean;
 
 public class OrderService {
-	private OrderDao orderDao = new OrderDao();
+	private final OrderDao orderDao = new OrderDao();
 	
 	/**
 	 * 生成订单

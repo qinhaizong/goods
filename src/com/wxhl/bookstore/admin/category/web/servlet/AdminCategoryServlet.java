@@ -14,7 +14,7 @@ import com.wxhl.tools.commons.CommonUtils;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class AdminCategoryServlet extends BaseServlet {
-	private CategoryService categoryService = new CategoryService();
+	private final CategoryService categoryService = new CategoryService();
 	
 	private String toJson(Category c) {
 		StringBuilder sb = new StringBuilder("{");

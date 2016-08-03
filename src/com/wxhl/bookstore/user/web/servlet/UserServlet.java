@@ -17,7 +17,7 @@ import com.wxhl.tools.commons.CommonUtils;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class UserServlet extends BaseServlet {
-	private UserService userService = new UserService();
+	private final UserService userService = new UserService();
 
 	/**
 	 * 异步校验登录名
@@ -127,7 +127,7 @@ public class UserServlet extends BaseServlet {
 		 * 2. 对表单数据进行服务器端校验
 		 */
 		Map<String, String> errors = validateRegist(user, req);
-		if (errors != null && errors.size() > 0) {// 是否存在校验错误信息
+		if (null != errors && errors.size() > 0) {// 是否存在校验错误信息
 			req.setAttribute("errors", errors);
 			req.setAttribute("user", user);
 			return "f:/jsps/user/regist.jsp";
@@ -200,7 +200,7 @@ public class UserServlet extends BaseServlet {
 		 * 2. 对formBean进行服务器端表单校验
 		 */
 		Map<String, String> errors = validateLogin(formBean, req);
-		if (errors != null && errors.size() > 0) {// 是否存在校验错误信息
+		if (null != errors && errors.size() > 0) {// 是否存在校验错误信息
 			req.setAttribute("errors", errors);
 			req.setAttribute("user", formBean);
 			return "f:/jsps/user/login.jsp";
@@ -281,7 +281,7 @@ public class UserServlet extends BaseServlet {
 	 * 登录校验方法
 	 */
 	private Map<String, String> validateLogin(User user, HttpServletRequest req) {
-		Map<String, String> errors = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<>();
 		// 对loginname进行校验
 		String loginname = user.getLoginname();
 		if (loginname == null || loginname.isEmpty()) {
@@ -315,7 +315,7 @@ public class UserServlet extends BaseServlet {
 	 * 服务器端表单校验 如果校验通过，返回长度为0的Map，如果校验失败，那么返回的Map中保存的是错误信息。 Map中key为字段名称，值为错误信息。
 	 */
 	private Map<String, String> validateRegist(User user, HttpServletRequest req) {
-		Map<String, String> errors = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<>();
 		// 对loginname进行校验
 		String loginname = user.getLoginname();
 		if (loginname == null || loginname.isEmpty()) {

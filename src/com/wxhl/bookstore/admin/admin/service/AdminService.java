@@ -6,7 +6,7 @@ import com.wxhl.bookstore.admin.admin.dao.AdminDao;
 import com.wxhl.bookstore.admin.admin.domain.Admin;
 
 public class AdminService {
-	private AdminDao adminDao = new AdminDao();
+	private final AdminDao adminDao = new AdminDao();
 	
 	/**
 	 * 管理员登录

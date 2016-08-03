@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * 对GET请求参数加以处理！
  */
 public class GetRequest extends HttpServletRequestWrapper {
-    private HttpServletRequest request;
-    private String charset;
+    private final HttpServletRequest request;
+    private final String charset;
 
     public GetRequest(HttpServletRequest request, String charset) {
         super(request);

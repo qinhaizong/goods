@@ -12,13 +12,13 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class VerifyCode {
-    private int w = 70;
-    private int h = 35;
-    private Random r = new Random();
+    private final int w = 70;
+    private final int h = 35;
+    private final Random r = new Random();
     // {"宋体", "华文楷体", "黑体", "华文新魏", "华文隶书", "微软雅黑", "楷体_GB2312"}
-    private String[] fontNames = {"宋体", "华文楷体", "黑体", "微软雅黑", "楷体_GB2312"};
-    private String codes = "23456789abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
-    private Color bgColor = new Color(255, 255, 255);
+    private final String[] fontNames = {"宋体", "华文楷体", "黑体", "微软雅黑", "楷体_GB2312"};
+    private final String codes = "23456789abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
+    private final Color bgColor = new Color(255, 255, 255);
     private String text;
 
     private Color randomColor() {

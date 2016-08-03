@@ -14,24 +14,36 @@ import java.util.List;
  */
 public class Mail {
     private String from;//发件人
-    private StringBuilder toAddress = new StringBuilder();//收件人
-    private StringBuilder ccAddress = new StringBuilder();//抄送
-    private StringBuilder bccAddress = new StringBuilder();//暗送
+//发件人
+    private StringBuilder toAddress;
+    private StringBuilder ccAddress;
+    private StringBuilder bccAddress;
 
     private String subject;//主题
+//主题
     private String content;//正文
-
-    // 附件列表
-    private List<AttachBean> attachList = new ArrayList<AttachBean>();
+    private List<AttachBean> attachList;
 
     public Mail() {
+        this.attachList = new ArrayList<>();
+        this.bccAddress = new StringBuilder();
+        this.ccAddress = new StringBuilder();
+        this.toAddress = new StringBuilder();
     }
 
     public Mail(String from, String to) {
         this(from, to, null, null);
+        this.attachList = new ArrayList<>();
+        this.bccAddress = new StringBuilder();
+        this.ccAddress = new StringBuilder();
+        this.toAddress = new StringBuilder();
     }
 
     public Mail(String from, String to, String subject, String content) {
+        this.attachList = new ArrayList<>();
+        this.bccAddress = new StringBuilder();
+        this.ccAddress = new StringBuilder();
+        this.toAddress = new StringBuilder();
         this.from = from;
         this.toAddress.append(to);
         this.subject = subject;

@@ -13,7 +13,7 @@ import com.wxhl.tools.jdbc.JdbcUtils;
  *
  */
 public class CartItemService {
-	private CartItemDao cartItemDao = new CartItemDao();
+	private final CartItemDao cartItemDao = new CartItemDao();
 	
 	/**
 	 * 我的购物车

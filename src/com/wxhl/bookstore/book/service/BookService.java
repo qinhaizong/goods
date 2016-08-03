@@ -7,7 +7,7 @@ import com.wxhl.bookstore.book.domain.Book;
 import com.wxhl.pager.PageBean;
 
 public class BookService {
-	private BookDao bookDao = new BookDao();
+	private final BookDao bookDao = new BookDao();
 	
 	/**
 	 * 按分类查询图书（分页）

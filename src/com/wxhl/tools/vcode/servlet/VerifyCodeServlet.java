@@ -12,6 +12,7 @@ import com.wxhl.tools.vcode.utils.VerifyCode;
 
 @SuppressWarnings("serial")
 public class VerifyCodeServlet extends HttpServlet {
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         VerifyCode vc = new VerifyCode();

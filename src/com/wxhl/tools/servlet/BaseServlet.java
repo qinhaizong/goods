@@ -1,6 +1,7 @@
 package com.wxhl.tools.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class BaseServlet extends HttpServlet {
         try {
             method = this.getClass().getMethod(methodName,
                     HttpServletRequest.class, HttpServletResponse.class);
-        } catch (Exception e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             throw new RuntimeException("您要调用的方法：" + methodName + "它不存在！", e);
         }
 
@@ -40,7 +41,7 @@ public class BaseServlet extends HttpServlet {
         try {
             String result = (String) method.invoke(this, request, response);
             if (result != null && !result.trim().isEmpty()) {//如果请求处理方法返回不为空
-                int index = result.indexOf(":");//获取第一个冒号的位置
+                int index = result.indexOf(':');//获取第一个冒号的位置
                 if (index == -1) {//如果没有冒号，使用转发
                     request.getRequestDispatcher(result).forward(request, response);
                 } else {//如果存在冒号
@@ -53,7 +54,7 @@ public class BaseServlet extends HttpServlet {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | ServletException | IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -9,8 +9,8 @@ import com.wxhl.bookstore.category.domain.Category;
 
 public class CategoryService {
 
-	private CategoryDao categoryDao = new CategoryDao();
-	private BookDao bookDao = new BookDao();
+	private final CategoryDao categoryDao = new CategoryDao();
+	private final BookDao bookDao = new BookDao();
 
 	/**
 	 * 返回所有分类

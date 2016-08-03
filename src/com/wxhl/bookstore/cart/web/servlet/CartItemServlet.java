@@ -20,7 +20,7 @@ import com.wxhl.tools.servlet.BaseServlet;
  *
  */
 public class CartItemServlet extends BaseServlet {
-	private CartItemService cartItemService = new CartItemService();
+	private final CartItemService cartItemService = new CartItemService();
 	
 	/**
 	 * 我的购物车

@@ -11,9 +11,11 @@ import com.wxhl.bookstore.user.domain.User;
 import com.wxhl.tools.commons.CommonUtils;
 import com.wxhl.tools.mail.Mail;
 import com.wxhl.tools.mail.MailUtils;
+import java.io.IOException;
+import javax.mail.MessagingException;
 
 public class UserService {
-	private UserDao userDao = new UserDao();
+	private final UserDao userDao = new UserDao();
 	
 	/**
 	 * 校验指定登录名的会员是否存在
@@ -81,7 +83,7 @@ public class UserService {
 			Session session = MailUtils.createSession(host, username, password);
 			Mail mail = new Mail(from, to, subject, content);
 			MailUtils.send(session, mail);
-		} catch (Exception e) {
+		} catch (SQLException | IOException | MessagingException e) {
 			throw new RuntimeException(e);
 		}	
 	}

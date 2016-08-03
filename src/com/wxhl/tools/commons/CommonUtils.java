@@ -1,7 +1,9 @@
 package com.wxhl.tools.commons;
 
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,7 +22,7 @@ public class CommonUtils {
 	 * @return
 	 */
 	public static String uuid() {
-		return UUID.randomUUID().toString().replace("-", "").toUpperCase();
+		return UUID.randomUUID().toString().replace("-", "").toUpperCase(Locale.CHINESE);
 	}
 
 	/**
@@ -61,7 +63,7 @@ public class CommonUtils {
 			ConvertUtils.register(conv, java.util.Date.class);
 			BeanUtils.populate(bean, map);
 			return bean;
-		} catch (Exception e) {
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
 			throw new RuntimeException(e);
 		}
 	}

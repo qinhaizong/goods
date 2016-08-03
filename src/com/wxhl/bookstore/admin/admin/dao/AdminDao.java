@@ -9,7 +9,11 @@ import com.wxhl.bookstore.admin.admin.domain.Admin;
 import com.wxhl.tools.jdbc.TxQueryRunner;
 
 public class AdminDao {
-	private QueryRunner qr = new TxQueryRunner();
+	private final QueryRunner qr;
+
+    public AdminDao() {
+        this.qr = new TxQueryRunner();
+    }
 	
 	/**
 	 * 按管理员名称和管理员密码查询

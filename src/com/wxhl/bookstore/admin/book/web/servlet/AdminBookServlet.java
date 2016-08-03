@@ -15,8 +15,8 @@ import com.wxhl.pager.PageBean;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class AdminBookServlet extends BaseServlet {
-	private BookService bookService = new BookService();
-	private CategoryService categoryService = new CategoryService();
+	private final BookService bookService = new BookService();
+	private final CategoryService categoryService = new CategoryService();
 
 	/*
 	 * 获取当前页码
@@ -40,7 +40,7 @@ public class AdminBookServlet extends BaseServlet {
 		int fromIndex = url.lastIndexOf("&pc=");
 		if (fromIndex == -1)
 			return url;
-		int toIndex = url.indexOf("&", fromIndex + 1);
+		int toIndex = url.indexOf('&', fromIndex + 1);
 		if (toIndex == -1)
 			return url.substring(0, fromIndex);
 		return url.substring(0, fromIndex) + url.substring(toIndex);
@@ -172,8 +172,8 @@ public class AdminBookServlet extends BaseServlet {
 	
 	/**
 	 * 加载图书
-	 * @param request
-	 * @param response
+     * @param req
+     * @param reps
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException
@@ -201,8 +201,8 @@ public class AdminBookServlet extends BaseServlet {
 	
 	/**
 	 * 编辑图书
-	 * @param request
-	 * @param response
+     * @param req
+     * @param resp
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException

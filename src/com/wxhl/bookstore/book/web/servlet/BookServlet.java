@@ -16,7 +16,7 @@ import com.wxhl.tools.servlet.BaseServlet;
 
 public class BookServlet extends BaseServlet {
 
-	private BookService bookService = new BookService();
+	private final BookService bookService = new BookService();
 
 	/*
 	 * 获取当前页码
@@ -42,7 +42,7 @@ public class BookServlet extends BaseServlet {
 		if (fromIndex == -1) {
 			return url;
 		}
-		int toIndex = url.indexOf("&", fromIndex + 1);
+		int toIndex = url.indexOf('&', fromIndex + 1);
 		if (toIndex == -1) {
 			return url.substring(0, fromIndex);
 		}

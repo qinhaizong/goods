@@ -21,8 +21,8 @@ import com.wxhl.pager.PageBean;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class OrderServlet extends BaseServlet {
-	private OrderService orderService = new OrderService();
-	private CartItemService  cartItemService = new CartItemService();
+	private final OrderService orderService = new OrderService();
+	private final CartItemService  cartItemService = new CartItemService();
 	
 	/*
 	 * 获取当前页码
@@ -44,7 +44,7 @@ public class OrderServlet extends BaseServlet {
 		String url = req.getRequestURI() + "?" + req.getQueryString();
 		int fromIndex = url.lastIndexOf("&pc=");
 		if(fromIndex == -1) return url;
-		int toIndex = url.indexOf("&", fromIndex + 1);
+		int toIndex = url.indexOf('&', fromIndex + 1);
 		if(toIndex == -1) return url.substring(0, fromIndex);
 		return url.substring(0, fromIndex) + url.substring(toIndex);
 	}
@@ -89,7 +89,7 @@ public class OrderServlet extends BaseServlet {
 		/*
 		 * 4. 通过List<CartItem>来创建List<OrderItem>，再把List<OrderItem>设置给Order
 		 */
-		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		List<OrderItem> orderItemList = new ArrayList<>();
 		for(CartItem cartItem : cartItemList) {
 			OrderItem orderItem = new OrderItem();
 			orderItem.setOrderItemId(CommonUtils.uuid());//设置orderItemId

@@ -27,6 +27,7 @@ public class MailUtils {
 
         // 创建验证器
         Authenticator auth = new Authenticator() {
+            @Override
             public PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }

@@ -8,12 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wxhl.bookstore.order.domain.Order;
 import com.wxhl.bookstore.order.service.OrderService;
-import com.wxhl.bookstore.user.domain.User;
 import com.wxhl.pager.PageBean;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class AdminOrderServlet extends BaseServlet {
-	private OrderService orderService = new OrderService();
+	private final OrderService orderService = new OrderService();
 	
 	/*
 	 * 获取当前页码
@@ -35,7 +34,7 @@ public class AdminOrderServlet extends BaseServlet {
 		String url = req.getRequestURI() + "?" + req.getQueryString();
 		int fromIndex = url.lastIndexOf("&pc=");
 		if(fromIndex == -1) return url;
-		int toIndex = url.indexOf("&", fromIndex + 1);
+		int toIndex = url.indexOf('&', fromIndex + 1);
 		if(toIndex == -1) return url.substring(0, fromIndex);
 		return url.substring(0, fromIndex) + url.substring(toIndex);
 	}

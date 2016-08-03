@@ -21,7 +21,7 @@ import com.wxhl.tools.jdbc.TxQueryRunner;
 import com.wxhl.pager.PageBean;
 
 public class OrderDao {
-	private QueryRunner qr = new TxQueryRunner();
+	private final QueryRunner qr = new TxQueryRunner();
 
 	/**
 	 * 添加订单
@@ -63,7 +63,7 @@ public class OrderDao {
 	 * @throws SQLException 
 	 */
 	public PageBean<Order> findByUser(String uid, int pc) throws SQLException {
-		Map<String,Object> criteria = new HashMap<String,Object>();
+		Map<String,Object> criteria = new HashMap<>();
 		criteria.put("uid", uid);
 		return findByCriteria(criteria, pc);
 	}
@@ -75,7 +75,7 @@ public class OrderDao {
 		/*
 		 * 1. 创建sql语句条件子句
 		 */
-		List<Object> params = new ArrayList<Object>();//条件，对应sql中的“?”
+		List<Object> params = new ArrayList<>();//条件，对应sql中的“?”
 		StringBuilder whereSql = new StringBuilder(" where 1=1");
 		for(String name : criteria.keySet()) {//循环遍历每个条件;
 			Object value = criteria.get(name);
@@ -116,7 +116,7 @@ public class OrderDao {
 		/*
 		 * 5. 创建PageBean，返回
 		 */
-		PageBean<Order> pb = new PageBean<Order>();
+		PageBean<Order> pb = new PageBean<>();
 		pb.setPc(pc);
 		pb.setPs(ps);
 		pb.setTr(tr);
@@ -137,7 +137,7 @@ public class OrderDao {
 		 * 2. 循环遍历每个Map，把每个Map映射成一个OrderItem对象和一个Book对象，然后再建立关系
 		 *   再把OrderItem添加到List中
 		 */
-		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		List<OrderItem> orderItemList = new ArrayList<>();
 		for(Map<String,Object> map : mapList) {
 			OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
 			Book book = CommonUtils.toBean(map, Book.class);
@@ -195,7 +195,7 @@ public class OrderDao {
 	 * @throws SQLException 
 	 */
 	public PageBean<Order> findAll(int pc) throws SQLException {
-		Map<String,Object> criteria = new HashMap<String,Object>();
+		Map<String,Object> criteria = new HashMap<>();
 		return findByCriteria(criteria, pc);
 	}
 	
@@ -207,7 +207,7 @@ public class OrderDao {
 	 * @throws SQLException
 	 */
 	public PageBean<Order> findByStatus(int status, int pc) throws SQLException {
-		Map<String,Object> criteria = new HashMap<String,Object>();
+		Map<String,Object> criteria = new HashMap<>();
 		criteria.put("status", status);
 		return findByCriteria(criteria, pc);
 	}

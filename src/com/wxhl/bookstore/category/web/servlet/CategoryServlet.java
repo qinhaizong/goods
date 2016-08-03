@@ -12,7 +12,7 @@ import com.wxhl.bookstore.category.service.CategoryService;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class CategoryServlet extends BaseServlet {
-	private CategoryService categoryService = new CategoryService();
+	private final CategoryService categoryService = new CategoryService();
 	
 	/**
 	 * 返回所有分类

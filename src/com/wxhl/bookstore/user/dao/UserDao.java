@@ -14,7 +14,7 @@ import com.wxhl.tools.jdbc.TxQueryRunner;
  *
  */
 public class UserDao {
-	private QueryRunner qr = new TxQueryRunner();
+	private final QueryRunner qr = new TxQueryRunner();
 	
 	/**
 	 * 校验指定登录名会员是否存在

@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import com.wxhl.bookstore.admin.admin.domain.Admin;
 
 public class AdminLoginServlet implements Filter {
+    @Override
 	public void destroy() {
 	}
 
+    @Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) request;
@@ -28,6 +30,8 @@ public class AdminLoginServlet implements Filter {
 		}
 	}
 
+    
+    @Override
 	public void init(FilterConfig fConfig) throws ServletException {
 
 	}

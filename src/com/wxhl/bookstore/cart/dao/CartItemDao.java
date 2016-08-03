@@ -21,7 +21,7 @@ import com.wxhl.tools.jdbc.TxQueryRunner;
  *
  */
 public class CartItemDao {
-	private QueryRunner qr = new TxQueryRunner();
+	private final QueryRunner qr = new TxQueryRunner();
 	
 	/*
 	 * 把Map映射成CartItem
@@ -39,7 +39,7 @@ public class CartItemDao {
 	 * 把List<Map>映射成List<CartItem>
 	 */
 	private List<CartItem> toBeanList(List<Map<String,Object>> mapList) {
-		List<CartItem> cartItemList = new ArrayList<CartItem>();
+		List<CartItem> cartItemList = new ArrayList<>();
 		for(Map<String,Object> map : mapList) {
 			cartItemList.add(toBean(map));
 		}

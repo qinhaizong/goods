@@ -12,7 +12,7 @@ import com.wxhl.tools.commons.CommonUtils;
 import com.wxhl.tools.servlet.BaseServlet;
 
 public class AdminServlet extends BaseServlet {
-	private AdminService adminService = new AdminService();
+	private final AdminService adminService = new AdminService();
 
 	/**
 	 * 登录功能
