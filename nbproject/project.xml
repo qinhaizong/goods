@@ -39,10 +39,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.itcast-tools-1.4.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.mchange-commons-0.2.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
