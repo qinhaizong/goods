@@ -1,7 +1,7 @@
 $(function() {
 	/*
 	 * 1. 让登录按钮在得到和失去焦点时切换图片
-	 */
+	
 	$("#submit").hover(
 		function() {
 			$("#submit").attr("src", "/goods/images/login2.jpg");
@@ -10,6 +10,7 @@ $(function() {
 			$("#submit").attr("src", "/goods/images/login1.jpg");
 		}
 	);
+	 */
 	
 	/*
 	 * 2. 给注册按钮添加submit()事件，完成表单校验
@@ -22,7 +23,7 @@ $(function() {
 			if(!invokeValidateFunction(inputName)) {
 				bool = false;
 			}
-		})
+		});
 		return bool;
 	});
 	

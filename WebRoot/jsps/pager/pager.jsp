@@ -11,8 +11,14 @@
 			alert('请输入正确的页码！');
 			return;
 		}
-		location = "${pb.url}&pc=" + pc;
+		//location = "${pb.url}&pc=" + pc;
+		$('.content').load("${pb.url}&pc=" + pc);
 	}
+	$(function(){
+		$('a[data-path]').on('click',function(){
+			$('.content').load($(this).attr('data-path'));
+		});
+	});
 </script>
 
 
@@ -24,7 +30,7 @@
 				<span class="spanBtnDisabled">上一页</span>
 			</c:when>
 			<c:otherwise>
-				<a href="${pb.url }&pc=${pb.pc-1}" class="aBtn bold">上一页</a>
+				<a data-path="${pb.url }&pc=${pb.pc-1}" class="aBtn bold">上一页</a>
 			</c:otherwise>
 		</c:choose>
 
@@ -61,7 +67,7 @@
 					<span class="spanBtnSelect">${pc }</span>
 				</c:when>
 				<c:otherwise>
-					<a href="${pb.url}&pc=${pc}" class="aBtn">${pc }</a>
+					<a data-path="${pb.url}&pc=${pc}" class="aBtn">${pc }</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -77,7 +83,7 @@
 				<span class="spanBtnDisabled">下一页</span>
 			</c:when>
 			<c:otherwise>
-				<a href="${pb.url }&pc=${pb.pc+1}" class="aBtn bold">下一页</a>
+				<a data-path="${pb.url }&pc=${pb.pc+1}" class="aBtn bold">下一页</a>
 			</c:otherwise>
 		</c:choose>   
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
